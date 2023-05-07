@@ -18,6 +18,16 @@
     --gradient-img-name: rgba(46, 47, 66, 0.7);
     --icon-media-color: #4D5AE5;
     --active-page-color: #404BBF;
+/* portfolio page - card filter color*/
+    --overley-text-color: #F4F4FD;
+    --overley-card-background: #4D5AE5;
+    --modal-open-btn-backg: #E7E9FC;
+    --modal-close-btn: #FFFFFF;
+    --modal-btn-backg: #404BBF;
+    --modal-open-btn: #2E2F42;
+
+    --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+    --primaty-transition: 250ms;
 }
 
 body {
@@ -208,8 +218,8 @@ img {
     border-radius: 4px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border: none;
-    min-width: 169px
-
+    min-width: 169px;
+    transition: background-color var(--primaty-transition) var(--cubic);
 }
 .button-order:hover,
 .button-order:focus {
@@ -440,33 +450,35 @@ img {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
-
 /*=============================================
 =         PORTFOLIO CARD - OVERLEY        =
 =============================================*/
 .thumb {
     position: relative;
-
+    overflow: hidden;
 }
-.card-thumb {
-
-}
-
 .overley {
     position: absolute;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
+    overflow: auto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
     padding: 40px 32px;
-    background-color: #4D5AE5;
-}
+    color: var(--overley-text-color);
+    background-color: var(--overley-card-background);
 
-.overley-text {
-    color: #F4F4FD;
+    transform: translateY(100%);
+    transition: transform var(--primaty-transition) var(--cubic);
 }
-
+.card-link:hover .overley, 
+.card-link:focus .overley {
+    transform: translateY(0%);
+}
 
 /*=====  Footer  ======*/
 .footer {
@@ -545,63 +557,55 @@ img {
 /*=============================================
 =     Modal window     =
 =============================================*/
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+}
 .backdrop {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
-
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
     width: 100%;
     height: 100%;
 
-    background-color: rgba(46, 47, 66, 0.4);
+    background: rgba(46, 47, 66, 0.4);
     backdrop-filter: blur(2px);
+
+    transition: opacity var(--primaty-transition) var(--cubic), visibility var(--primaty-transition) var(--cubic);
 }
 
 .modal {
     position: absolute;
-    top: calc(50% - 250px);
+    top: calc(50% - 300px);
     left: calc(50% - 225px);
-    
+    /* transform: translate(-50%,-50%) scale(1); */
     width: 408px;
     height: 584px;
 
-    background: #FCFCFC;
+    background-color: #FCFCFC;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-
+    transition: transform var(--primaty-transition) var(--cubic);
 }
-
 .modal-close-btn {
-    /* position: absolute;
-    margin-left: 360px;
-    margin-top: 24px;
-
-    width: 24px;
-    height: 24px;
-
-    background: #E7E9FC;
-    border: 1px solid rgba(0, 0, 0, 0.1); */
-
-
-    /* border-radius: 50%; */
     position: absolute;
     width: 24px;
     height: 24px;
-
+    left: 360px;
+    top: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #E7E9FC;
+    background-color: var(--modal-open-btn-backg);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
+    cursor: pointer;
+    transition: background-color var(--primaty-transition) var(--cubic), color var(--primaty-transition) var(--cubic);
+    fill: var(--modal-open-btn);
 }
-
-.modal-close-icon {
-
-
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    background-color: var(--modal-btn-backg);
+    border-radius: 50%;
+    fill: var(--modal-close-btn);
 }
-
