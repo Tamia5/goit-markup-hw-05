@@ -221,7 +221,7 @@ img {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border: none;
     min-width: 169px;
-    transition: background-color var(--primaty-transition) var(--cubic);
+    transition: background-color var(--transition-time-cubic);
 }
 .button-order:hover,
 .button-order:focus {
@@ -579,7 +579,7 @@ img {
     background: rgba(46, 47, 66, 0.4);
     backdrop-filter: blur(2px);
 
-    transition: opacity var(--primaty-transition) var(--cubic), visibility var(--primaty-transition) var(--cubic);
+    transition: opacity var(--transition-time-cubic), visibility var(--transition-time-cubic);
 }
 
 .modal {
